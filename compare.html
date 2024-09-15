@@ -1,0 +1,166 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phone Comparison</title>
+    <style>
+        /* General styles */
+        
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 20px;
+            padding: 0;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        th,
+        td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        th {
+            background-color: #f2f2f2;
+            color: #333;
+            font-weight: bold;
+        }
+        
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+        
+        td:first-child {
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Phone Comparison</h1>
+        <div id="phoneComparison"></div>
+
+        <script>
+            // Get the parameters from the URL
+            const urlParams = new URLSearchParams(window.location.search);
+            const phone1 = urlParams.get('phone1');
+            const phone2 = urlParams.get('phone2');
+
+            // Phone specifications (you can customize these)
+            const phoneSpecs = {
+                // Replace these with actual specifications of the phones
+                [phone1]: {
+                    display: "6.5 inches",
+                    processor: "Snapdragon 888",
+                    ram: "8 GB",
+                    storage: "128 GB",
+                    camera: "Triple 64 MP, 32 MP front",
+                    battery: "4500 mAh",
+                    os: "Android 11",
+                },
+                [phone2]: {
+                    display: "6.7 inches",
+                    processor: "A14 Bionic",
+                    ram: "6 GB",
+                    storage: "256 GB",
+                    camera: "Triple 12 MP, 12 MP front",
+                    battery: "3687 mAh",
+                    os: "iOS 14",
+                }
+            };
+
+            // Function to display phone comparison
+            function displayComparison() {
+                // Get the comparison container
+                const comparisonContainer = document.getElementById("phoneComparison");
+
+                // Create HTML to display the comparison
+                const comparisonHTML = `
+                    <table>
+                        <tr>
+                            <th>Specifications</th>
+                            <th>${phone1}</th>
+                            <th>${phone2}</th>
+                        </tr>
+                        <tr>
+                            <td>Display</td>
+                            <td>${phoneSpecs[phone1].display}</td>
+                            <td>${phoneSpecs[phone2].display}</td>
+                        </tr>
+                        <tr>
+                            <td>Processor</td>
+                            <td>${phoneSpecs[phone1].processor}</td>
+                            <td>${phoneSpecs[phone2].processor}</td>
+                        </tr>
+                        <tr>
+                            <td>RAM</td>
+                            <td>${phoneSpecs[phone1].ram}</td>
+                            <td>${phoneSpecs[phone2].ram}</td>
+                        </tr>
+                        <tr>
+                            <td>Storage</td>
+                            <td>${phoneSpecs[phone1].storage}</td>
+                            <td>${phoneSpecs[phone2].storage}</td>
+                        </tr>
+                        <tr>
+                            <td>Camera</td>
+                            <td>${phoneSpecs[phone1].camera}</td>
+                            <td>${phoneSpecs[phone2].camera}</td>
+                        </tr>
+                        <tr>
+                            <td>Battery</td>
+                            <td>${phoneSpecs[phone1].battery}</td>
+                            <td>${phoneSpecs[phone2].battery}</td>
+                        </tr>
+                        <tr>
+                            <td>Operating System</td>
+                            <td>${phoneSpecs[phone1].os}</td>
+                            <td>${phoneSpecs[phone2].os}</td>
+                        </tr>
+                    </table>
+                `;
+
+                // Set the HTML content of the comparison container
+                comparisonContainer.innerHTML = comparisonHTML;
+            }
+
+            // Call the displayComparison function when the page loads
+            displayComparison();
+        </script>
+    </div>
+</body>
+
+</html>
